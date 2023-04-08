@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-emphasis',
@@ -10,6 +11,10 @@ export class EmphasisComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.includesHeader();
+  }
+
+  private includesHeader() {   
   }
 
 }
