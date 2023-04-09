@@ -20,7 +20,7 @@ export class FreeGamesComponent implements OnInit {
   private async getFreeGames() {
     try {
       this.games = await this.gamesService.getFreeGames().toPromise();
-      console.log('FreeGames', this.games.results);
+     
 
     } catch (error) {
       console.error(error);
@@ -29,10 +29,7 @@ export class FreeGamesComponent implements OnInit {
 
   private convertPlatformsToSvg() {
     this.games?.results.map((obj) => {
-      obj.platforms.map((result) => {
-        console.log('result', result);
-        console.log('result.platform', result.platform);
-        console.log('result.platform.imgSvg', result.platform.imgSvg);
+      obj.platforms.map((result) => {     
         let firstPart = result.platform.name.split(" ")[0];
         if (firstPart == 'PlayStation') {
           let svg = './../../assets/icons/icons8-playstation.svg'
@@ -45,7 +42,6 @@ export class FreeGamesComponent implements OnInit {
           result.platform.image = svg;
         }
       });
-    });
-    console.log('FreeGames', this.games?.results);
+    });    
   }
 }

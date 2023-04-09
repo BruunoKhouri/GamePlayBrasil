@@ -3,6 +3,7 @@ import { GamesService } from 'src/app/services/games.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { BannerEmphasis, headerEmphasis, headerHome, posts } from 'src/app/model/posts.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { about } from 'src/app/model/about.model';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit {
   public title: string = BannerEmphasis.title;
   public subTitle: string = BannerEmphasis.subtitle;
   public img: string = BannerEmphasis.img;
+  public idPage?: number;
 
   constructor(
     private gamesService: GamesService,
@@ -23,6 +25,7 @@ export class HeaderComponent implements OnInit {
     private titleService: Title,
     private metaService: Meta) {
     this.gamesService.getPost.subscribe(id => {
+      this.idPage = id;
       if (id) {
         posts.map((obj) => {
           this.title = obj.title;
@@ -46,11 +49,19 @@ export class HeaderComponent implements OnInit {
         this.img = BannerEmphasis.img;
         this.titleService.setTitle(headerHome.title);
         this.metaService.updateTag({ name: 'description', content: `${headerHome.description}` });
+      } if (id == 3) {
+        this.title = `Sobre ${about.name}`;
+        this.subTitle = '';
+        this.img = about.img;
+        this.titleService.setTitle(about.title);
+        this.metaService.updateTag({ name: 'description', content: `${about.description}` });
       }
+
     })
   }
 
   ngOnInit(): void {
+
 
   }
 
@@ -60,9 +71,17 @@ export class HeaderComponent implements OnInit {
     this.gamesService.getPost.emit(0);
   }
 
+  goToAbout(id: number) {
+    this.router.navigate(['/sobre', id]);
+    this.gamesService.getPost.emit(3);
+  }
+
   goToEmphasis() {
-    this.router.navigate(['/destaque']);
-    this.gamesService.getPost.emit(2);
+    if (this.idPage == 0 || this.idPage == 2) {
+      this.router.navigate(['/destaque']);
+      this.gamesService.getPost.emit(2);
+    }
+
   }
 
 

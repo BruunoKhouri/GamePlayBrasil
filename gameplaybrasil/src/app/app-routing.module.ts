@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'artigo/:id',
     loadChildren: () => import('./components/posts/posts.module').then(m => m.PostsModule)
   },
+  {
+    path: 'sobre/:id',
+    loadChildren: () => import('./components/about/about.module').then(m => m.AboutModule)
+  },
   // {
   //   path: 'Jogos',
   //   loadChildren: () => import('./free-games/free-games.module').then(m => m.FreeGamesModule)

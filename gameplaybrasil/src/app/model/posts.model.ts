@@ -4,7 +4,10 @@ export interface postModel {
     description?: string,
     id: number,
     data: string,
-    img: string
+    img: string,
+    trailer?: string,
+    author?: string,
+    date?: string
 }
 export interface headerModel {
     title: string,
@@ -32,7 +35,10 @@ export const posts: Array<postModel> = [
         Em resumo, Resident Evil 4 Remake é um dos jogos mais aguardados pelos fãs da franquia, e espera - se que traga melhorias significativas na jogabilidade e gráficos, além de manter a sensação de tensão e terror que o jogo original ofereceu.Só saberemos com certeza como o jogo será quando for lançado, então fique atento para as novidades sobre o jogo.
         </p>
         `,
-        img: 'assets/posts/resident-evil-4.jpg'
+        img: 'assets/posts/resident-evil-4.jpg',
+        trailer: 'https://www.youtube.com/embed/JT2puUySAXk',
+        author: 'Ashiok',
+        date: 'March 01, 2023'
     }
 ];
 

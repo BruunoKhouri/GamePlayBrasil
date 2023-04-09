@@ -5,8 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class RegexPipe implements PipeTransform {
     transform(value: string, pattern: string, flags?: string): any {
-        const regex = new RegExp(pattern, flags);
-        console.log('va', value, pattern, flags)
+        const regex = new RegExp(pattern, flags);       
         return regex.test(value);
     }
 }
