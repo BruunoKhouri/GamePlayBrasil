@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
         this.img = BannerEmphasis.img;
         this.titleService.setTitle(headerHome.title);
         this.metaService.updateTag({ name: 'description', content: `${headerHome.description}` });
-      } if (id == 3) {
+      } if (id == 'ashiok') {
         this.title = `Sobre ${about.name}`;
         this.subTitle = '';
         this.img = about.img;
@@ -71,9 +71,9 @@ export class HeaderComponent implements OnInit {
     this.gamesService.getPost.emit(0);
   }
 
-  goToAbout(id: number) {
+  goToAbout(id: any) {
     this.router.navigate(['/sobre', id]);
-    this.gamesService.getPost.emit(3);
+    this.gamesService.getPost.emit(id);
   }
 
   goToEmphasis() {

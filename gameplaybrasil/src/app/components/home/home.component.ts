@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private gamesService: GamesService) { }
 
   ngOnInit(): void {
+    this.gamesService.getPost.emit(0);
   }
   public goToPost(id: number) {
     this.router.navigate(['/artigo', id]);
